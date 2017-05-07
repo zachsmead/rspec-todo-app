@@ -24,7 +24,11 @@ RSpec.describe Task, type: :model do
   		expect(task.overdue?).to eq(false)
   	end
 		it 'should tell you the time is past the deadline' do
-  		task = Task.new(deadline: Time.now - 1.hour)
+      task = Task.new(deadline: Time.now - 1.hour)
+      expect(task.overdue?).to eq(true)
+    end
+    it 'should tell you the time is past the deadline' do
+  		task = Task.new(deadline: Time.now)
   		expect(task.overdue?).to eq(true)
   	end
 	end
@@ -65,6 +69,6 @@ RSpec.describe Task, type: :model do
   		expect(task.deadline).to eq(new_deadline)
   	end
 	end
-	
+
 
 end
